@@ -32,28 +32,26 @@ function Terminal({ workspace, onClose }) {
       '  clear     - Clear terminal',
       '  neofetch  - System info',
     ],
-    about: () => [
-      'Hi! I\'m a developer passionate about creating unique experiences.',
-      'This portfolio is inspired by Arch Linux + Hyprland aesthetic.',
-    ],
+    about: () => {
+      return [
+        { type: 'about', content: 'info' }
+      ]
+    },
     projects: () => {
       return [
         { type: 'projects', content: 'list' }
       ]
     },
-    skills: () => [
-      'Technical Skills:',
-      '  • React.js, JavaScript, TypeScript',
-      '  • Node.js, Express',
-      '  • Linux, Arch, Hyprland',
-      '  • Git, Docker',
-    ],
-    contact: () => [
-      'Get in touch:',
-      '  Email: your@email.com',
-      '  GitHub: github.com/yourusername',
-      '  LinkedIn: linkedin.com/in/yourprofile',
-    ],
+    skills: () => {
+      return [
+        { type: 'skills', content: 'list' }
+      ]
+    },
+    contact: () => {
+      return [
+        { type: 'contact', content: 'info' }
+      ]
+    },
     clear: () => {
       setHistory([])
       return []
@@ -245,7 +243,121 @@ function Terminal({ workspace, onClose }) {
       ></div>
       <div className="terminal-body" ref={terminalRef}>
         {history.map((line, i) => (
-          line.type === 'projects' ? (
+          line.type === 'about' ? (
+            <div key={i} className="about-container">
+              <div className="about-header">👋 About Me</div>
+              <div className="about-content">
+                <div className="about-card">
+                  <div className="about-text">
+                    <p>Hi! I'm <span className="highlight">Nithin</span>, a passionate <span className="highlight">Full Stack Developer</span> from Tiruppur, India.</p>
+                    <p>I love creating unique and innovative web experiences that blend functionality with beautiful design. This portfolio is inspired by the minimalist aesthetic of Arch Linux and Hyprland window manager.</p>
+                    <p>I specialize in building modern web applications using React, Node.js, and exploring machine learning technologies. Always eager to learn new technologies and take on challenging projects.</p>
+                  </div>
+                  <div className="about-stats">
+                    <div className="stat-item">
+                      <div className="stat-value">5+</div>
+                      <div className="stat-label">Projects</div>
+                    </div>
+                    <div className="stat-item">
+                      <div className="stat-value">10+</div>
+                      <div className="stat-label">Technologies</div>
+                    </div>
+                    <div className="stat-item">
+                      <div className="stat-value">∞</div>
+                      <div className="stat-label">Learning</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : line.type === 'contact' ? (
+            <div key={i} className="contact-container">
+              <div className="contact-header">📬 Get In Touch</div>
+              <div className="contact-grid">
+                <a href="mailto:nithinx002@gmail.com" className="contact-card">
+                  <div className="contact-icon">📧</div>
+                  <div className="contact-info">
+                    <div className="contact-label">Email</div>
+                    <div className="contact-value">nithinx002@gmail.com</div>
+                  </div>
+                </a>
+                
+                <a href="https://github.com/nithinx02" target="_blank" rel="noopener noreferrer" className="contact-card">
+                  <div className="contact-icon">
+                    <img src="/github-logo.svg" alt="GitHub" style={{width: '32px', height: '32px', filter: 'invert(1)'}} />
+                  </div>
+                  <div className="contact-info">
+                    <div className="contact-label">GitHub</div>
+                    <div className="contact-value">@nithinx02</div>
+                  </div>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/nithin-devigner/" target="_blank" rel="noopener noreferrer" className="contact-card">
+                  <div className="contact-icon">
+                    <img src="/linkedin-logo.svg" alt="LinkedIn" style={{width: '32px', height: '32px'}} />
+                  </div>
+                  <div className="contact-info">
+                    <div className="contact-label">LinkedIn</div>
+                    <div className="contact-value">nithin-devigner</div>
+                  </div>
+                </a>
+                
+                <div className="contact-card">
+                  <div className="contact-icon">📍</div>
+                  <div className="contact-info">
+                    <div className="contact-label">Location</div>
+                    <div className="contact-value">Tiruppur, India</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : line.type === 'skills' ? (
+            <div key={i} className="skills-container">
+              <div className="skills-header">💻 Technical Skills</div>
+              <div className="skills-grid">
+                <div className="skill-category">
+                  <div className="category-title">▸ Frontend</div>
+                  <div className="skill-tags">
+                    <span className="skill-tag">React.js</span>
+                    <span className="skill-tag">JavaScript</span>
+                    <span className="skill-tag">TypeScript</span>
+                    <span className="skill-tag">HTML5</span>
+                    <span className="skill-tag">CSS3</span>
+                    <span className="skill-tag">Vite</span>
+                  </div>
+                </div>
+                
+                <div className="skill-category">
+                  <div className="category-title">▸ Backend</div>
+                  <div className="skill-tags">
+                    <span className="skill-tag">Node.js</span>
+                    <span className="skill-tag">Express</span>
+                    <span className="skill-tag">Python</span>
+                  </div>
+                </div>
+                
+                <div className="skill-category">
+                  <div className="category-title">▸ Tools & Others</div>
+                  <div className="skill-tags">
+                    <span className="skill-tag">Git</span>
+                    <span className="skill-tag">Docker</span>
+                    <span className="skill-tag">Linux</span>
+                    <span className="skill-tag">Arch</span>
+                    <span className="skill-tag">Hyprland</span>
+                  </div>
+                </div>
+                
+                <div className="skill-category">
+                  <div className="category-title">▸ Machine Learning</div>
+                  <div className="skill-tags">
+                    <span className="skill-tag">Python</span>
+                    <span className="skill-tag">AI/ML</span>
+                    <span className="skill-tag">Data Science</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : line.type === 'projects' ? (
             <div key={i} className="projects-container">
               <div className="projects-header">📂 My Projects</div>
               <div className="projects-grid">
@@ -308,10 +420,7 @@ function Terminal({ workspace, onClose }) {
                 <div className="profile-role">Full Stack Developer</div>
               </div>
               <div className="neofetch-right">
-                <div>
-                  <div className="neofetch-header">nithin@portfolio</div>
-                  <div className="neofetch-divider"></div>
-                </div>
+                <div className="neofetch-header">nithin@portfolio</div>
                 
                 <div className="neofetch-section">
                   <div className="neofetch-info">
