@@ -31,6 +31,7 @@ function Terminal({ workspace, onClose }) {
       '  contact   - Get in touch',
       '  clear     - Clear terminal',
       '  neofetch  - System info',
+      '  exit      - Close terminal',
     ],
     about: () => {
       return [
@@ -54,6 +55,12 @@ function Terminal({ workspace, onClose }) {
     },
     clear: () => {
       setHistory([])
+      return []
+    },
+    exit: () => {
+      if (onClose) {
+        onClose()
+      }
       return []
     },
     neofetch: () => {
@@ -249,7 +256,7 @@ function Terminal({ workspace, onClose }) {
               <div className="about-content">
                 <div className="about-card">
                   <div className="about-text">
-                    <p>Hi! I'm <span className="highlight">Nithin</span>, a passionate <span className="highlight">Full Stack Developer</span> from Tiruppur, India.</p>
+                    <p>Hi! I'm <span className="highlight">Nithin</span>, a passionate <span className="highlight">Java Developer </span> from Tiruppur, India.</p>
                     <p>I love creating unique and innovative web experiences that blend functionality with beautiful design. This portfolio is inspired by the minimalist aesthetic of Arch Linux and Hyprland window manager.</p>
                     <p>I specialize in building modern web applications using React, Node.js, and exploring machine learning technologies. Always eager to learn new technologies and take on challenging projects.</p>
                   </div>
